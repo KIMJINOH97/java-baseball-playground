@@ -1,7 +1,7 @@
 package baseball;
 
 public class BaseBall {
-    private String answer = "234";
+    private String answer = "713";
     private String userAnswer;
 
     private int strikeCount = 0;

@@ -25,13 +25,27 @@ public class ResultView {
     }
 
     public void printBall(){
-        if (ball == 0)
-            return;
+        if (ball == 0) return;
         System.out.print(String.valueOf(ball) + "볼 ");
     }
 
     public void printStrike(){
-        System.out.println(String.valueOf(strike) + "스트라이크");
+        if (strike == 0) return;
+        System.out.print(String.valueOf(strike) + "스트라이크");
+    }
+
+    public void printBallAndStrike(){
+        if (ball == 0 && strike == 0){
+            System.out.println("낫싱");
+            setRestart(false);
+            return ;
+        }
+        printBall();
+        printStrike();
+        System.out.println();
+    }
+
+    public void printCorrect(){
         if (strike == 3){
             System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
             printRestart();
@@ -41,12 +55,8 @@ public class ResultView {
     public Boolean outputView(int strike, int ball){
         this.strike = strike;
         this.ball = ball;
-        if (ball == 0 && strike == 0){
-            System.out.println("낫싱");
-            return restart;
-        }
-        printBall();
-        printStrike();
+        printBallAndStrike();
+        printCorrect();
         return restart;
     }
 
@@ -58,5 +68,8 @@ public class ResultView {
         this.ball = ball;
     }
 
+    public void setRestart(Boolean restart) {
+        this.restart = restart;
+    }
     public Boolean getRestart(){ return restart; }
 }
